@@ -1,0 +1,16 @@
+{
+  "name": "svite-test-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "svite",
+    "build": "svite build"
+  },
+  "dependencies": {
+    "@dependency/dependency": "file:dependency"
+  },
+  "devDependencies": {
+    "svelte": "3.29.7",
+    "svelte-hmr": "0.11.6",
+    "svite": "file:../../../svite/"
+  }
+}
