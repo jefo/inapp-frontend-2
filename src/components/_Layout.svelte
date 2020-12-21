@@ -32,22 +32,12 @@
 </style>
 
 <script>
-  import { getContext } from 'svelte';
-  import Header from '@/components/Header.svelte';
-  import { Route } from '@/routing';
-  export let component;
-  export let context;
-  const { notificationsEntity } = getContext('entities');
-  const unread = notificationsEntity.unread();
-  let hasNotifications = false;
-
-  $: hasNotifications = $unread.length > 0;
+  import Header from './Header.svelte';
 </script>
 
 <main class="main-app">
-  <Header {context} hasNotifications={hasNotifications} />
+  <Header />
   <div class="content">
     <slot />
-    <Route {component} />
   </div>
 </main>

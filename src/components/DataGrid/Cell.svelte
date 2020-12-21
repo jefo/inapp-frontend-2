@@ -57,7 +57,7 @@
 </script>
 
 <div
-  class="grid-cell py-{py} px-{px} pt-{pt} pr-{pr} pb-{pb} pl-{pl} mr-{mr} mb-{mb}
+  class="grid-cell truncate py-{py} px-{px} pt-{pt} pr-{pr} pb-{pb} pl-{pl} mr-{mr} mb-{mb}
   {align}
   {classes}"
   {title}

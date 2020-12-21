@@ -125,8 +125,8 @@
       </a>
     </div>
     <div class="menu-btn-box">
-      <a href="/dashboard" class="menu-btn" class:active="{location.pathname === '/dashboard'}">
-        DASHBOARD
+      <a href="/reports" class="menu-btn" class:active="{location.pathname === '/reports'}">
+        REPORTS
       </a>
     </div>
   </div>

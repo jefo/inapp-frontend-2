@@ -4,8 +4,8 @@
   }
 </style>
 <script>
-  import Box from '@/components/Box.svelte';
-  import CardHeader from '@/components/Card/Header.svelte';
+  import Box from '../Box.svelte';
+  import CardHeader from './Header.svelte';
 
   export let title = '';
   export let component = Box;

@@ -15,14 +15,13 @@
 
 <div
   class:flex-wrap="{flexWrap}"
-  class="card-header flex items-center py-{py} px-{px} pb-{pb} pt-{pt} border-b border-gray-a lg:border-none"
+  class="card-header flex items-center justify-between py-{py} px-{px} pb-{pb} pt-{pt} border-b border-gray-a lg:border-none"
   style="background-color: {backgroundColor}"
 >
-  <h1 class="font-bold text-base-1 flex-1">
+  <h1 class="font-bold text-base-1 flex-initial">
     <slot />
   </h1>
-  <div class="flex-auto w-full">
-    <slot name="filter" />
+  <div class="flex-initial">
+    <slot name="control" />
   </div>
-  <slot name="control" />
 </div>

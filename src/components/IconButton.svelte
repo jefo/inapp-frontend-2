@@ -1,7 +1,25 @@
 <style>
   .icon-button {
-    border: none;
     transition: background-color 0.1s ease-in-out;
+    border: 1px solid var(--color-tetriary-darken);
+    border-radius: 4px;
+    background-color: var(--color-tetriary-lighter2);
+    transition: background-color 0.1s ease-in-out;
+    transition: border-color 0.1s ease-in-out;
+  }
+
+  .icon-button:active {
+    background-color: #ebedf7;
+    border-color: var(--default-border);
+  }
+
+  .icon-button.size-xs {
+    height: 35px;
+    min-width: 35px;
+  }
+
+  .icon-button:no-border {
+    border: none;
   }
 
   .icon-button:active,
@@ -9,7 +27,7 @@
     outline: none;
   }
 
-  :global(.selected .file-icon .label) {
+  .icon-button :global(.selected .file-icon .label) {
     color: #fff;
   }
 
@@ -21,15 +39,16 @@
 
 <script>
   import { createEventDispatcher } from 'svelte';
+  import cn from 'classnames';
   import Icon from './Icon.svelte';
 
   export let icon = '';
-  export let px = 'init';
-  export let py = 'init';
-  export let pt = 'init';
-  export let pr = 'init';
-  export let pb = 'init';
-  export let pl = 'init';
+  export let px = '';
+  export let py = '';
+  export let pt = '';
+  export let pr = '';
+  export let pb = '';
+  export let pl = '';
   export let stretch = false;
   export let el = null;
   export let value = '';
@@ -38,6 +57,17 @@
   export let selected = false;
   export let disabled = false;
   export let iconProps = {};
+  export let noBorder = false;
+  export let size = 'xs'
+
+  const classNames = cn({
+    [`px-${px}`]: px,
+    [`py-${py}`]: py,
+    [`pt-${pt}`]: pt,
+    [`pr-${pr}`]: pr,
+    [`pb-${pb}`]: pb,
+    [`pl-${pl}`]: pl,
+  });
 
   const dispatch = createEventDispatcher();
 
@@ -59,11 +89,11 @@
   on:click="{handleClick}"
   class:selected
   class:disabled
+  class:no-border={noBorder}
   class:h-full="{stretch}"
   class:w-full="{stretch}"
-  class="control inline-flex items-center justify-center icon-button px-{px} py-{py}
-  pt-{pt} pr-{pr} pb-{pb} pl-{pl}
-  {value}"
+  class:size-xs={size === 'xs'}
+  class="control icon-button inline-flex items-center justify-center {classNames}"
 >
   <slot>
     <Icon name="{icon}" {...iconProps} />

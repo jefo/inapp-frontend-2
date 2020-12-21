@@ -2,12 +2,16 @@
   .row {
     display: contents;
   }
+
+  .row.large :global(.grid-cell) {
+    min-height: 70px;
+  }
 </style>
 
 <script>
-  export let width = 0;
+  export let large = false;
 </script>
 
-<div class="row">
+<div class="row" class:large>
   <slot />
 </div>

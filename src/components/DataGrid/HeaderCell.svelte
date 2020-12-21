@@ -10,7 +10,7 @@
 
 <script>
   import Cell from './Cell.svelte';
-  import IconButton from '@/components/IconButton.svelte';
+  import IconButton from '../IconButton.svelte';
 
   export let sortable = false;
   export let direction = 'desc';

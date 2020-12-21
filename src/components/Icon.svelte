@@ -1,3 +1,8 @@
+<style>
+  .icon {
+    vertical-align: middle;
+  }
+</style>
 <script>
   import InlineSVG from './InlineSvg.svelte';
   import { createEventDispatcher } from 'svelte';
@@ -49,7 +54,7 @@
 <span
   bind:this={el}
   class:inline-block="{inlineBlock}"
-  class="{name}"
+  class="icon {name}"
   on:click="{handleClick}"
   on:mouseup|preventDefault|stopPropagation
   on:mousedown|preventDefault|stopPropagation

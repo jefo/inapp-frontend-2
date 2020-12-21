@@ -48,9 +48,9 @@
   import { current_component, onMount } from 'svelte/internal';
   import { createEventDispatcher } from 'svelte';
   import { getEventsAction } from '@/utils';
-  import Box from '@/components/Box.svelte';
-  import Icon from '@/components/Icon.svelte';
-  import ValidationMessage from '@/components/ValidationMessage.svelte';
+  import Box from './Box.svelte';
+  import Icon from './Icon.svelte';
+  import ValidationMessage from './ValidationMessage.svelte';
 
   export let name = '';
   export let value = '';
