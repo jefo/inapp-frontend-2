@@ -6,12 +6,35 @@
   import Button from '../components/Button.svelte';
   import IconButton from '../components/IconButton.svelte';
   import Grid from '../components/DataGrid/Grid.svelte';
+  import SortableGrid from '../components/DataGrid/SortableGrid.svelte';
   import Cell from '../components/DataGrid/Cell.svelte';
   import Row from '../components/DataGrid/Row.svelte';
   import HeaderCell from '../components/DataGrid/HeaderCell.svelte';
   import HeaderRow from '../components/DataGrid/HeaderRow.svelte';
   import ActionsCell from '../components/DataGrid/ActionsCell.svelte';
   import PlayButton from '../components/PlayButton.svelte';
+
+  let columns = [
+    { pl: 15, align: 'left', prop: 'name', label: 'Name', sortable: true },
+    { prop: 'id', label: 'ID', sortable: true, },
+    { prop: 'adUnits', label: 'Ad units', sortable: true, },
+    { prop: 'apiKey', label: 'API key', sortable: true, },
+    { prop: 'adMobId', label: 'AdMob ID', sortable: true, },
+    { pl: 15, align: 'left', prop: 'created', label: 'Created', sortable: true, },
+    { pl: 15, align: 'left', prop: 'modified', label: 'Modified', sortable: true, },
+    { pl: 15, align: 'left', prop: 'status', label: 'Status', sortable: true, },
+    { pl: 36, align: 'left', label: 'Action', sortable: false, },
+  ];
+
+  let order = [
+    { by: 'name', direction: 'desc' },
+    { by: 'id', direction: 'desc' },
+    { by: 'adUnits', direction: 'desc' },
+    { by: 'apiKey', direction: 'desc' },
+    { by: 'adMobId', direction: 'desc' },
+    { by: 'created', direction: 'desc' },
+    { by: 'modified', direction: 'desc' },
+  ];
 </script>
 
 <Layout>
@@ -23,18 +46,12 @@
       </div>
     </CardHeader>
     <div class="relative mt-22 px-12 sm:px-15">
-      <Grid columnsTemplate={'minmax(auto, 196px) minmax(auto, 78px) minmax(auto, 100px) minmax(auto, 126px) minmax(auto, 129px) minmax(auto, 135px) minmax(auto, 130px) minmax(auto, 112px) 1fr'}>
-        <HeaderRow>
-          <HeaderCell pl={15} align="left">Name</HeaderCell>
-          <HeaderCell>ID</HeaderCell>
-          <HeaderCell>Ad units</HeaderCell>
-          <HeaderCell>API key</HeaderCell>
-          <HeaderCell>AdMob ID</HeaderCell>
-          <HeaderCell align="left" pl={15}>Created</HeaderCell>
-          <HeaderCell align="left" pl={15}>Modified</HeaderCell>
-          <HeaderCell align="left" pl={15}>Status</HeaderCell>
-          <HeaderCell pl={36}>Action</HeaderCell>
-        </HeaderRow>
+      <SortableGrid
+        order={order}
+        columns={columns}
+        gridProps={{
+          columnsTemplate: 'minmax(auto, 196px) minmax(auto, 78px) minmax(auto, 100px) minmax(auto, 126px) minmax(auto, 129px) minmax(auto, 135px) minmax(auto, 130px) minmax(auto, 112px) 1fr',
+        }}>
         <Row large>
           <Cell align="left" pl={15}>Candy crush</Cell>
           <Cell>3</Cell>
@@ -56,7 +73,7 @@
             </div>
           </ActionsCell>
         </Row>
-      </Grid>
+      </SortableGrid>
     </div>
   </Card>
 </Layout>

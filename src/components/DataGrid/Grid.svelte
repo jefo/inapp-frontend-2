@@ -20,12 +20,7 @@
   import Row from './Row.svelte';
   import HeaderRow from './HeaderRow.svelte';
   import Divider from '../Divider.svelte';
-
-  export const rows = [];
-  export const columns = [];
   export let columnsTemplate = '';
-
-  $: console.log(columnsTemplate);
 </script>
 
 <div class="relative data-grid">

@@ -1,9 +1,9 @@
 <style>
   .arrow-box {
-    right: 15px;
+    right: 0;
   }
 
-  .desc {
+  .asc {
     transform: rotate(180deg);
   }
 </style>
@@ -26,8 +26,8 @@
 <Cell on:click clickable="{sortable}" header {pt} {pr} {pb} {pl} {mr} {mb} {align}>
   <slot />
   {#if sortable}
-    <div class="absolute arrow-box" class:desc="{direction === 'desc'}">
-      <IconButton stopPropagation="{false}" icon="arrow-down" iconProps="{{ size: '8px' }}" />
+    <div class="absolute arrow-box" class:asc="{direction === 'asc'}">
+      <IconButton onlyIcon stopPropagation="{false}" icon="arrow-down" iconProps="{{ size: '8px' }}" />
     </div>
   {/if}
 </Cell>

@@ -18,8 +18,9 @@
     min-width: 35px;
   }
 
-  .icon-button:no-border {
+  .icon-button.icon-only {
     border: none;
+    background-color: transparent;
   }
 
   .icon-button:active,
@@ -57,7 +58,7 @@
   export let selected = false;
   export let disabled = false;
   export let iconProps = {};
-  export let noBorder = false;
+  export let onlyIcon = false;
   export let size = 'xs'
 
   const classNames = cn({
@@ -89,7 +90,7 @@
   on:click="{handleClick}"
   class:selected
   class:disabled
-  class:no-border={noBorder}
+  class:icon-only={onlyIcon}
   class:h-full="{stretch}"
   class:w-full="{stretch}"
   class:size-xs={size === 'xs'}
