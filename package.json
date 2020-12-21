@@ -1,119 +1,20 @@
 {
-  "name": "svite",
-  "version": "0.8.1",
-  "description": "svelte integration plugin for vite",
+  "name": "inapp-frontend-2",
+  "version": "2.0.0",
   "scripts": {
-    "lint": "run-p lint:script lint:style",
-    "lint:script": "eslint --ignore-path .gitignore '**/*.{js,ts,svelte,html,svx,md}'",
-    "lint:style": "stylelint --ignore-path .gitignore '**/*.{css,scss,svelte,html,js,ts,svx,md}'",
-    "lint:fix": "run-s lint:fix:script lint:fix:style",
-    "lint:fix:script": "npm run lint:script -- --fix",
-    "lint:fix:style": "npm run lint:style -- --fix",
-    "format": "prettier --ignore-path .gitignore '**/*.{css,scss,svelte,html,js,ts,svx,md}' --check",
-    "format:fix": "npm run format -- --write",
-    "fixup": "run-s lint:fix format:fix",
-    "test": "jest --no-cache --runInBand --force-exit --ci --json --outputFile=\"test/temp/jest-results.json\"",
-    "prerelease": "run-s lint \"test --scripts-prepend-node-path\"",
-    "release": "standard-version",
-    "beta-release": "npm run release -- -p beta",
-    "update-peers:check": "./scripts/check-updates.js --peers-only",
-    "update-peers:upgrade": "./scripts/check-updates.js --peers-only --upgrade",
-    "update-others:check": "./scripts/check-updates.js --skip-peers",
-    "update-others:upgrade": "./scripts/check-updates.js --skip-peers --upgrade",
-    "update-all:check": "./scripts/check-updates.js",
-    "update-all:upgrade": "./scripts/check-updates.js --upgrade"
+    "dev": "svite",
+    "build": "svite build"
   },
-  "bin": "./bin/svite.js",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dominikg/svite.git"
-  },
-  "keywords": [
-    "vite",
-    "vite plugin",
-    "vitejs",
-    "vitejs plugin",
-    "svelte"
-  ],
-  "author": "dominikg",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dominikg/svite/issues"
-  },
-  "homepage": "https://github.com/dominikg/svite#readme",
-  "dependencies": {
-    "@rollup/pluginutils": "^4.1.0",
-    "chalk": "^4.1.0",
-    "commander": "^6.2.0",
-    "debug": "^4.3.1",
-    "degit": "^2.8.0",
-    "execa": "^4.1.0",
-    "lru-cache": "^6.0.0",
-    "rollup-plugin-svelte-hot": "^0.11.2",
-    "vite": "^1.0.0-rc.9"
-  },
-  "peerDependencies": {
-    "svelte": "^3.29.7",
-    "svelte-hmr": "^0.11.6"
-  },
-  "optionalDependencies": {
-    "rollup-plugin-visualizer": "^4.2.0",
-    "svelte-preprocess": "^4.6.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.1",
-    "@typescript-eslint/parser": "^4.8.1",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-config-recommended": "^4.1.0",
-    "eslint-plugin-html": "^6.1.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.3",
-    "eslint-plugin-markdown": "^2.0.0-alpha.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-svelte3": "^2.7.3",
-    "fs-extra": "^9.0.1",
-    "glob": "^7.1.6",
-    "husky": "^4.3.0",
-    "jest": "^26.6.3",
-    "jest-junit": "^12.0.0",
-    "lint-staged": "^10.5.1",
-    "npm-check-updates": "^10.2.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.2.0",
-    "prettier-plugin-svelte": "^1.4.1",
-    "puppeteer-core": "^5.5.0",
-    "rollup-plugin-visualizer": "^4.2.0",
-    "standard-version": "^9.0.0",
-    "stylelint": "^13.8.0",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-recommended": "^3.0.0",
+    "postcss": "^7.0.35",
+    "postcss-import": "^12.0.1",
+    "postcss-load-config": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "svelte": "^3.29.7",
+    "svelte-hmr": "^0.11.6",
     "svelte-preprocess": "^4.6.1",
-    "tree-kill": "^1.2.2",
-    "typescript": "^4.1.2",
-    "write-file-atomic": "^3.0.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,svelte,html,md,svx}": "./node_modules/.bin/eslint --fix",
-    "*.{css,scss,svelte,html,js,ts,md,svx}": [
-      "./node_modules/.bin/stylelint --fix",
-      "./node_modules/.bin/prettier --write"
-    ]
-  },
-  "engines": {
-    "node": "^12||^14",
-    "npm": "^6.14",
-    "yarn": "^1.22 || ^2",
-    "pnpm": "^5.5"
+    "svite": "^0.8.1",
+    "tailwindcss": "compat"
   }
 }
