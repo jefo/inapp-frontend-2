@@ -1,23 +1,7 @@
 <script>
-  const world = 'postcss'; // edit world and save to see hmr update
+  import Routing from 'svelte-router-spa';
+  import { routes } from './routes';
+  const Router = Routing.Router.default;
 </script>
 
-<style>
-  h1 {
-    color: orangered; /* change color an save to see hmr update */
-    /* you can also use css nesting
-    & .world {
-      font-size: 2rem;
-    }
-    */
-  }
-  .world {
-    @apply text-green-500 italic; /*  here's some tailwind apply */
-  }
-</style>
-
-<h1 class="border border-current rounded p-4 m-4">
-  <!-- tailwind classes in svelte template -->
-  Hello
-  <span class="world">{world}</span>
-</h1>
+<Router {routes} />

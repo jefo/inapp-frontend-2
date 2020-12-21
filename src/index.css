@@ -1,3 +1,52 @@
 @import 'tailwindcss/base.css';
+
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
+
+@layer base {
+  @font-face {
+    font-family: "Open Sans";
+    font-weight: 300;
+    src: url(/public/fonts/open_sans/OpenSans-Light.ttf) format("ttf");
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-weight: normal;
+    src: url(/public/fonts/open_sans/OpenSans-Regular.ttf) format("ttf");
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-weight: 600;
+    src: url(/public/fonts/open_sans/OpenSans-SemiBold.ttf) format("ttf");
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-weight: bold;
+    src: url(/pubic/fonts/open_sans/OpenSans-Bold.ttf) format("ttf");
+  }
+  @font-face {
+    font-family: "Open Sans";
+    font-weight: 800;
+    src: url(/public/fonts/open_sans/OpenSans-ExtraBold.ttf) format("ttf");
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+  }
+}

@@ -1,5 +1,5 @@
 module.exports = {
   optimizeDeps: {
-    include: ['@dependency/dependency'],
+    include: ['svelte-router-spa'],
   },
 };
