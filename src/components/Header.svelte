@@ -109,7 +109,6 @@
   import IconButton from './IconButton.svelte';
   import List from './DropdownMenu/List.svelte';
   import ListItem from './DropdownMenu/Item.svelte';
-
 </script>
 
 <!-- svelte-ignore missing-declaration -->
@@ -127,6 +126,11 @@
     <div class="menu-btn-box">
       <a href="/reports" class="menu-btn" class:active="{location.pathname === '/reports'}">
         REPORTS
+      </a>
+    </div>
+    <div class="menu-btn-box">
+      <a href="/log-out" class="menu-btn">
+        LOG OUT
       </a>
     </div>
   </div>

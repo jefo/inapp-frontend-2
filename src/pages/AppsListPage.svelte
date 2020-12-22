@@ -12,6 +12,8 @@
   }
 </style>
 <script>
+  import { getContext } from 'svelte';
+  import { map } from 'rxjs/operators';
   import copy from 'copy-text-to-clipboard';
   import Layout from '../components/_Layout.svelte';
   import Header from '../components/Header.svelte';
@@ -28,7 +30,19 @@
   import ActionsCell from '../components/DataGrid/ActionsCell.svelte';
   import PlayButton from '../components/PlayButton.svelte';
 
-  let columns = [
+  const { appsEntity } = getContext('entities');
+  const appsList = appsEntity.selectAll()
+    .pipe(
+      map(apps => apps.map(app => ({
+        ...app,
+        created_at: app.created_at || '---',
+        updated_at: app.updated_at || '---',
+      }))),
+    );
+
+  appsEntity.loadAll();
+
+  const columns = [
     { pl: 15, align: 'left', prop: 'name', label: 'Name', sortable: true },
     { prop: 'id', label: 'ID', sortable: true, },
     { prop: 'adUnits', label: 'Ad units', sortable: true, },
@@ -40,7 +54,7 @@
     { pl: 36, align: 'left', label: 'Action', sortable: false, },
   ];
 
-  let order = [
+  const order = [
     { by: 'name', direction: 'desc' },
     { by: 'id', direction: 'desc' },
     { by: 'adUnits', direction: 'desc' },
@@ -54,60 +68,70 @@
 <Layout>
   <Card>
     <CardHeader>
-      Current Apps
+      <div class="font-extrabold text-2xl">Current Apps</div>
       <div slot="control">
         <Button primary size="small">ADD NEW APP</Button>
       </div>
     </CardHeader>
-    <div class="app-grid-box relative mt-22 px-12 sm:px-15">
+    <div class="app-grid-box pb-40 relative mt-22 px-12 sm:px-15">
       <SortableGrid
         order={order}
         columns={columns}
         gridProps={{
           columnsTemplate: 'minmax(auto, 196px) minmax(auto, 78px) minmax(auto, 100px) minmax(auto, 126px) minmax(auto, 129px) minmax(auto, 135px) minmax(auto, 130px) minmax(auto, 112px) 1fr',
         }}>
-        <Row large>
-          <Cell align="left" pl={15}>
-            <strong>Candy crush</strong>
-          </Cell>
-          <Cell>3</Cell>
-          <Cell>10</Cell>
-          <Cell relative>
-            1
-            <div class="absolute" style="right: 10px;">
-              <IconButton on:click={() => copy('API KEY')} flat icon="copy" />
+        {#each $appsList as app}
+          <Row large>
+            <Cell align="left" pl={15}>
+              <strong>{app.name}</strong>
+            </Cell>
+            <Cell>{app.id}</Cell>
+            <Cell>---</Cell>
+            <Cell relative>
+              <div class="truncate w-32 pr-2">
+                {app.api_key}
+              </div>
+              <div class="absolute" style="right: 10px;">
+                <IconButton on:click={() => copy(app.api_key)} flat icon="copy" />
+              </div>
+            </Cell>
+            <Cell>
+            <div class="truncate w-32 pr-2">
+              {app.admob_app_id}
             </div>
-          </Cell>
-          <Cell>
-            2
-            <div class="absolute" style="right: 10px;">
-              <IconButton on:click={() => copy('ADMON ID')} flat icon="copy" />
-            </div>
-          </Cell>
-          <Cell align="left" pl={6}>Mar, 30 2020</Cell>
-          <Cell align="left" pl={6}>Dec 02, 2020</Cell>
-          <Cell align="left">
-            <div class="pl-8 h-full w-full active flex items-center">
-              Active
-            </div>
-          </Cell>
-          <ActionsCell align="left" pl={8}>
-            <div class="flex justify-between w-full">
-              <PlayButton />
-              <div class="flex flex-initial">
-                <div class="mr-5">
-                  <IconButton px={1} icon="eye_grey" size="xs" />
-                </div>
-                <div class="mr-5">
-                  <IconButton px={1} icon="pen_square" size="xs" />
-                </div>
-                <div class="mr-5">
-                  <IconButton px={1} icon="trash_empty" size="xs" />
+              <div class="absolute" style="right: 10px;">
+                <IconButton on:click={() => copy(app.admob_app_id)} flat icon="copy" />
+              </div>
+            </Cell>
+            <Cell align="left" pl={6}>{app.created_at}</Cell>
+            <Cell align="left" pl={6}>{app.updated_at}</Cell>
+            <Cell align="left">
+              <div
+                class:active={app.is_active}
+                class:paused={!app.is_active}
+                class="pl-8 h-full w-full flex items-center"
+              >
+                {app.is_active ? 'Active' : 'Paused'}
+              </div>
+            </Cell>
+            <ActionsCell align="left" pl={8}>
+              <div class="flex justify-between w-full">
+                <PlayButton />
+                <div class="flex flex-initial">
+                  <div class="mr-5">
+                    <IconButton px={1} icon="eye_grey" size="xs" />
+                  </div>
+                  <div class="mr-5">
+                    <IconButton px={1} icon="pen_square" size="xs" />
+                  </div>
+                  <div class="mr-5">
+                    <IconButton px={1} icon="trash_empty" size="xs" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </ActionsCell>
-        </Row>
+            </ActionsCell>
+          </Row>
+        {/each}
       </SortableGrid>
     </div>
   </Card>

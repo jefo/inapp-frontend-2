@@ -5,24 +5,19 @@
     "es6": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "prettier"
+    "eslint:recommended"
   ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint",
     "svelte3",
-    "html",
-    "markdown"
+    "html"
   ],
   "overrides": [
     {
@@ -40,25 +35,6 @@
         "import/no-duplicates": "off",
         "import/no-mutable-exports": "off",
         "import/no-unresolved": "off"
-      }
-    },
-    {
-      "files": ["**/*.svx","**/*.md"],
-      "processor": "markdown/markdown",
-      "rules": {
-        "no-undef": "off",
-        "no-unused-vars": "off",
-        "no-console": "off",
-        "padded-blocks": "off"
-      }
-    },
-    {
-      "files": ["**/*.svx/*.**","**/*.md/*.**"],
-      "rules": {
-        "no-undef": "off",
-        "no-unused-vars": "off",
-        "no-console": "off",
-        "padded-blocks": "off"
       }
     },
     {

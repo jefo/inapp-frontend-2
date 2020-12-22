@@ -6,11 +6,17 @@
     "build": "svite build"
   },
   "dependencies": {
+    "@datorama/akita": "^5.3.0",
+    "axios": "^0.21.1",
     "copy-text-to-clipboard": "^2.2.0",
+    "date-fns": "^2.16.1",
+    "rxjs": "^6.6.3",
     "svelte-router-spa": "^5.8.3"
   },
   "devDependencies": {
     "classnames": "^2.2.6",
+    "eslint-plugin-html": "^6.1.1",
+    "eslint-plugin-svelte3": "^3.0.0",
     "postcss": "^7.0.35",
     "postcss-import": "^12.0.1",
     "postcss-load-config": "^3.0.0",
