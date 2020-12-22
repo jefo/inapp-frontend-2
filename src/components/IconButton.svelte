@@ -58,7 +58,7 @@
   export let selected = false;
   export let disabled = false;
   export let iconProps = {};
-  export let onlyIcon = false;
+  export let flat = false;
   export let size = 'xs'
 
   const classNames = cn({
@@ -90,7 +90,7 @@
   on:click="{handleClick}"
   class:selected
   class:disabled
-  class:icon-only={onlyIcon}
+  class:icon-only={flat}
   class:h-full="{stretch}"
   class:w-full="{stretch}"
   class:size-xs={size === 'xs'}

@@ -6,6 +6,7 @@
     "build": "svite build"
   },
   "dependencies": {
+    "copy-text-to-clipboard": "^2.2.0",
     "svelte-router-spa": "^5.8.3"
   },
   "devDependencies": {

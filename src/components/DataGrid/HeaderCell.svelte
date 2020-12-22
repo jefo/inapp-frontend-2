@@ -27,7 +27,7 @@
   <slot />
   {#if sortable}
     <div class="absolute arrow-box" class:asc="{direction === 'asc'}">
-      <IconButton onlyIcon stopPropagation="{false}" icon="arrow-down" iconProps="{{ size: '8px' }}" />
+      <IconButton flat stopPropagation="{false}" icon="arrow-down" iconProps="{{ size: '8px' }}" />
     </div>
   {/if}
 </Cell>

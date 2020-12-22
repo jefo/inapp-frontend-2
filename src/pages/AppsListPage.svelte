@@ -1,4 +1,18 @@
+<style>
+  .app-grid-box {
+    font-size: 16px;
+  }
+
+  .active {
+    background-color: #ECF7FA;
+  }
+
+  .paused {
+    background-color: #F7F1F6;
+  }
+</style>
 <script>
+  import copy from 'copy-text-to-clipboard';
   import Layout from '../components/_Layout.svelte';
   import Header from '../components/Header.svelte';
   import Card from '../components/Card/Card.svelte';
@@ -20,9 +34,9 @@
     { prop: 'adUnits', label: 'Ad units', sortable: true, },
     { prop: 'apiKey', label: 'API key', sortable: true, },
     { prop: 'adMobId', label: 'AdMob ID', sortable: true, },
-    { pl: 15, align: 'left', prop: 'created', label: 'Created', sortable: true, },
-    { pl: 15, align: 'left', prop: 'modified', label: 'Modified', sortable: true, },
-    { pl: 15, align: 'left', prop: 'status', label: 'Status', sortable: true, },
+    { pl: 7, align: 'left', prop: 'created', label: 'Created', sortable: true, },
+    { pl: 7, align: 'left', prop: 'modified', label: 'Modified', sortable: true, },
+    { pl: 7, align: 'left', prop: 'status', label: 'Status', sortable: true, },
     { pl: 36, align: 'left', label: 'Action', sortable: false, },
   ];
 
@@ -45,7 +59,7 @@
         <Button primary size="small">ADD NEW APP</Button>
       </div>
     </CardHeader>
-    <div class="relative mt-22 px-12 sm:px-15">
+    <div class="app-grid-box relative mt-22 px-12 sm:px-15">
       <SortableGrid
         order={order}
         columns={columns}
@@ -53,23 +67,44 @@
           columnsTemplate: 'minmax(auto, 196px) minmax(auto, 78px) minmax(auto, 100px) minmax(auto, 126px) minmax(auto, 129px) minmax(auto, 135px) minmax(auto, 130px) minmax(auto, 112px) 1fr',
         }}>
         <Row large>
-          <Cell align="left" pl={15}>Candy crush</Cell>
+          <Cell align="left" pl={15}>
+            <strong>Candy crush</strong>
+          </Cell>
           <Cell>3</Cell>
           <Cell>10</Cell>
-          <Cell>f2frf34f34r534t45gt54hg4h45h4h4545gvvevqre43g43</Cell>
-          <Cell>ca-app-wtf-test-da</Cell>
-          <Cell align="left" pl={15}>Mar, 30 2020</Cell>
-          <Cell align="left" pl={15}>Dec 02, 2020</Cell>
-          <Cell align="left" pl={15}>Active</Cell>
+          <Cell relative>
+            1
+            <div class="absolute" style="right: 10px;">
+              <IconButton on:click={() => copy('API KEY')} flat icon="copy" />
+            </div>
+          </Cell>
+          <Cell>
+            2
+            <div class="absolute" style="right: 10px;">
+              <IconButton on:click={() => copy('ADMON ID')} flat icon="copy" />
+            </div>
+          </Cell>
+          <Cell align="left" pl={6}>Mar, 30 2020</Cell>
+          <Cell align="left" pl={6}>Dec 02, 2020</Cell>
+          <Cell align="left">
+            <div class="pl-8 h-full w-full active flex items-center">
+              Active
+            </div>
+          </Cell>
           <ActionsCell align="left" pl={8}>
-            <div class="mr-11">
+            <div class="flex justify-between w-full">
               <PlayButton />
-            </div>
-            <div class="mr-5">
-              <IconButton px={1} icon="pen_square" size="xs" />
-            </div>
-            <div class="mr-5">
-              <IconButton px={1} icon="trash_empty" size="xs" />
+              <div class="flex flex-initial">
+                <div class="mr-5">
+                  <IconButton px={1} icon="eye_grey" size="xs" />
+                </div>
+                <div class="mr-5">
+                  <IconButton px={1} icon="pen_square" size="xs" />
+                </div>
+                <div class="mr-5">
+                  <IconButton px={1} icon="trash_empty" size="xs" />
+                </div>
+              </div>
             </div>
           </ActionsCell>
         </Row>

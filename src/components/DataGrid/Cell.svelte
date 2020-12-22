@@ -50,6 +50,7 @@
   export let active = false;
   export let paused = false;
   export let clickable = false;
+  export let relative = false;
   let classes = '';
   if (span) {
     classes += `col-span-${span}`;
@@ -65,6 +66,7 @@
   class:active
   class:paused
   class:header
+  class:relative
   on:click
 >
   <slot />
